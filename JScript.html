@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>JS-8</title>
+    <script type="text/javascript">
+        function vivl(form) {
+            var fail = false;
+            var name = form.name.value;
+            var email = form.email.value;
+            var pass = form.pass.value;
+            var repass = form.RePass.value;
+            var state = form.Genderf.value;
+            var Comm = form.Comm.value;
+            var Eemail = /[0-9a-z_-]+@[0-9a-z_-]+\.[a-z]{2,5}/i;
+            if (name == "" || name == " ")
+                fail = "Ошибочка с именем"
+            else if (Eemail.test(email) == false)
+                fail = "Ошибочка с Email"
+            else if (pass == "" || pass == " ")
+                fail = "Ошибочка с паролем"
+            else if (repass != pass)
+                fail = "Ошибочка с переписанием пароля"
+            else if (state == "")
+                fail = "Ошибка в выборе пола"
+            else if (Comm == "" || Comm == " ")
+                fail = "Оставьте комментарий"
+
+
+            if (fail) {
+                alert(fail);
+                return false;
+            } else {
+                window.location = "https://github.com/"
+            }
+
+        }
+    </script>
+</head>
+<style>
+    body {
+        background-color: blanchedalmond;
+    }
+</style>
+
+<body>
+    <form action="" method="POST" name="test" onsubmit="vivl(this)" id="form">
+        <label for="name">Name: </label>
+        <input type="text" name="name" placeholder="Enter Your Name" id="name" /><br /><br />
+        <label for="email">Email: </label>
+        <input type="text" name="email" placeholder="Enter your Email" id="email"><br /><br />
+        <label for="pass">Password: </label>
+        <input type="text" name="pass" placeholder="Enter your Password" id="pss" /><br /><br />
+        <label for="Repass">(First) Password: </label>
+        <input type="text" name="RePass" placeholder="Enter Your Password Again" id="repass" /><br /><br />
+        <span>Gender: </span>
+        <input type="radio" name="Genderf" value="Men" id="Gen1" />
+        <label for="Gen1">Girl: </label>
+        <input type="radio" name="Genderf" value="Girl" id="Gen2" />
+        <label for="Gen2">Men: </label><br /><br />
+        <label for="Comm">Commentory: </label>
+        <input type="text" name="Comm" placeholder="Enter Your Comment" id="Com"><br /><br />
+        <input type="button" value="Ok, I`m ready!" onclick="vivl(document.getElementById('form'))" name="sumbit">
+    </form>
+</body>
+
+</html>
